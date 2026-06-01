@@ -17,7 +17,7 @@ export const site = {
   email: "jjoshi.tech@yahoo.com",
   // [REPLACE] - update the LinkedIn URL below before deploying
   linkedin: "https://www.linkedin.com/in/jj-cyberenthusiast/",
-  location: "San Diego, USA",
+  location: "Corona, USA",
   resumeFile: "/Jay-Joshi-Resume.pdf",
   seo: {
     title:
