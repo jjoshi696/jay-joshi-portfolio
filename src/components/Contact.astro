@@ -1,120 +1,310 @@
 ---
 import { site } from "@data/site";
-// NOTE: Email and LinkedIn values come from src/data/site.ts.
-// Replace the placeholders there before deploying.
+
+const highlightChips = [
+  "AI Automation",
+  "Managed EDR & XDR",
+  "SOC Transformation",
+] as const;
 ---
 
-<section id="contact" class="section-pad">
-  <div class="container-page">
-    <div class="grid gap-10 lg:grid-cols-12 lg:gap-14">
-      <div class="lg:col-span-6">
-        <span class="eyebrow">Contact</span>
-        <h2 class="heading-lg mt-4">
-          Let's <span class="text-gradient">connect</span>.
-        </h2>
-        <p class="mt-5 max-w-xl text-slate-300">
-          Open to conversations around AI-driven cybersecurity automation,
-          Managed XDR, SOC transformation, engineering leadership, and digital
-          transformation.
-        </p>
+<section id="contact" class="relative section-pad">
+  <!-- Subtle background visuals -->
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
+  >
+    <div
+      class="absolute -left-32 top-10 h-72 w-72 rounded-full bg-accent-cyan/10 blur-3xl animate-pulse-slow"
+    >
+    </div>
+    <div
+      class="absolute -right-24 bottom-0 h-80 w-80 rounded-full bg-accent-violet/10 blur-3xl animate-pulse-slow"
+    >
+    </div>
+    <div
+      class="absolute left-1/2 top-1/2 -z-10 h-[120%] w-[80%] -translate-x-1/2 -translate-y-1/2 bg-grid-faint opacity-[0.18]"
+      style="background-size: 56px 56px; mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 30%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 30%, transparent 75%);"
+    >
+    </div>
+  </div>
 
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a href={`mailto:${site.email}`} class="btn-primary">
-            <svg
-              class="h-4 w-4"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-              ></path>
-              <polyline points="22,6 12,13 2,6"></polyline>
-            </svg>
-            Email Me
-          </a>
-          <a
-            href={site.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn-secondary"
-          >
-            <svg
-              class="h-4 w-4"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.05-1.86-3.05-1.86 0-2.14 1.45-2.14 2.95v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.86 3.36-1.86 3.6 0 4.27 2.37 4.27 5.45v6.3zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"
-              ></path>
-            </svg>
-            LinkedIn
-          </a>
-          <a href={site.resumeFile} download class="btn-ghost">
-            <svg
-              class="h-4 w-4"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-              <polyline points="7 10 12 15 17 10"></polyline>
-              <line x1="12" y1="15" x2="12" y2="3"></line>
-            </svg>
-            Download Resume
-          </a>
+  <div class="container-page">
+    <div
+      class="glow-ring relative overflow-hidden rounded-3xl border border-white/[0.08] bg-gradient-to-br from-ink-900/80 via-ink-800/60 to-ink-900/80 p-6 sm:p-10 lg:p-14"
+    >
+      <!-- Connecting nodes accent -->
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute inset-0 opacity-[0.35]"
+      >
+        <div
+          class="absolute right-10 top-10 h-2 w-2 rounded-full bg-accent-cyan shadow-[0_0_12px_rgba(34,211,238,0.7)]"
+        >
+        </div>
+        <div
+          class="absolute right-20 top-24 h-1.5 w-1.5 rounded-full bg-accent-violet shadow-[0_0_10px_rgba(139,92,246,0.6)]"
+        >
+        </div>
+        <div
+          class="absolute right-32 top-8 h-1 w-1 rounded-full bg-accent-blue"
+        >
         </div>
       </div>
 
-      <div class="lg:col-span-6">
-        <div class="card">
-          <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
-            <div>
-              <div class="text-xs uppercase tracking-[0.18em] text-slate-500">
-                Email
-              </div>
-              <a
-                href={`mailto:${site.email}`}
-                class="mt-1.5 block break-words text-sm text-white hover:text-accent-cyan"
-              >
-                {site.email}
-              </a>
-            </div>
-            <div>
-              <div class="text-xs uppercase tracking-[0.18em] text-slate-500">
-                LinkedIn
-              </div>
-              <a
-                href={site.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="mt-1.5 block break-words text-sm text-white hover:text-accent-cyan"
-              >
-                {site.linkedin.replace(/^https?:\/\//, "")}
-              </a>
-            </div>
-            <div class="sm:col-span-2">
-              <div class="text-xs uppercase tracking-[0.18em] text-slate-500">
-                Location
-              </div>
-              <div class="mt-1.5 text-sm text-white">{site.location}</div>
-            </div>
+      <div class="relative grid gap-10 lg:grid-cols-12 lg:gap-14">
+        <!-- LEFT: CTA panel -->
+        <div class="lg:col-span-7">
+          <span class="eyebrow">Contact</span>
+          <h2 class="heading-lg mt-4">
+            Let's <span class="text-gradient">Build What's Next</span>.
+          </h2>
+          <p class="mt-5 max-w-xl text-slate-300">
+            I'm always open to meaningful conversations around AI-driven
+            security operations, managed detection and response,
+            automation-led transformation, and building scalable global
+            engineering teams.
+          </p>
+
+          <div class="mt-6 flex flex-wrap gap-2" aria-label="Focus areas">
+            {highlightChips.map((c) => (
+              <span class="chip-accent">{c}</span>
+            ))}
           </div>
 
-          <div class="divider my-6"></div>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href={`mailto:${site.email}`} class="btn-primary">
+              <svg
+                class="h-4 w-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                ></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              Email Me
+            </a>
+            <a
+              href={site.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-secondary"
+            >
+              <svg
+                class="h-4 w-4"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.05-1.86-3.05-1.86 0-2.14 1.45-2.14 2.95v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.86 3.36-1.86 3.6 0 4.27 2.37 4.27 5.45v6.3zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"
+                ></path>
+              </svg>
+              Connect on LinkedIn
+            </a>
+            <a href={site.resumeFile} download class="btn-ghost">
+              <svg
+                class="h-4 w-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              Download Resume
+            </a>
+          </div>
 
-          <p class="text-xs text-slate-500">
-            For partnership or speaking opportunities, please include company,
-            scope, and timing in your message.
+          <p class="mt-8 max-w-xl text-xs text-slate-500">
+            For partnerships, advisory discussions, speaking opportunities, or
+            transformation initiatives, please include company, scope, and
+            timing in your message.
           </p>
+        </div>
+
+        <!-- RIGHT: contact card -->
+        <div class="lg:col-span-5">
+          <div
+            class="group relative h-full overflow-hidden rounded-2xl border border-white/[0.08] bg-ink-900/60 p-6 backdrop-blur-xl transition-colors hover:border-accent-cyan/25"
+          >
+            <div
+              aria-hidden="true"
+              class="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-accent-cyan/10 blur-3xl"
+            >
+            </div>
+
+            <div class="relative">
+              <div class="flex items-center justify-between">
+                <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-accent-cyan/90">
+                  Direct Contact
+                </h3>
+                <span
+                  class="inline-flex h-7 w-7 items-center justify-center rounded-full border border-accent-cyan/25 bg-accent-cyan/[0.06] text-accent-cyan"
+                  aria-hidden="true"
+                >
+                  <svg
+                    class="h-3.5 w-3.5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                  </svg>
+                </span>
+              </div>
+
+              <ul class="mt-5 divide-y divide-white/[0.06]">
+                <!-- Email -->
+                <li class="group/row py-3.5">
+                  <a
+                    href={`mailto:${site.email}`}
+                    class="flex items-start gap-3 rounded-lg transition-colors"
+                  >
+                    <span
+                      class="mt-0.5 inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.04] text-slate-300 transition-colors group-hover/row:border-accent-cyan/30 group-hover/row:text-accent-cyan"
+                      aria-hidden="true"
+                    >
+                      <svg
+                        class="h-4 w-4"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                      </svg>
+                    </span>
+                    <div class="min-w-0 flex-1">
+                      <div class="text-[10px] uppercase tracking-[0.18em] text-slate-500">
+                        Email
+                      </div>
+                      <div
+                        class="mt-0.5 break-words text-sm text-white transition-colors group-hover/row:text-accent-cyan"
+                      >
+                        {site.email}
+                      </div>
+                    </div>
+                  </a>
+                </li>
+
+                <!-- LinkedIn -->
+                <li class="group/row py-3.5">
+                  <a
+                    href={site.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-start gap-3 rounded-lg transition-colors"
+                  >
+                    <span
+                      class="mt-0.5 inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.04] text-slate-300 transition-colors group-hover/row:border-accent-cyan/30 group-hover/row:text-accent-cyan"
+                      aria-hidden="true"
+                    >
+                      <svg
+                        class="h-4 w-4"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                      >
+                        <path
+                          d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.05-1.86-3.05-1.86 0-2.14 1.45-2.14 2.95v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.86 3.36-1.86 3.6 0 4.27 2.37 4.27 5.45v6.3zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"
+                        ></path>
+                      </svg>
+                    </span>
+                    <div class="min-w-0 flex-1">
+                      <div class="text-[10px] uppercase tracking-[0.18em] text-slate-500">
+                        LinkedIn
+                      </div>
+                      <div
+                        class="mt-0.5 break-words text-sm text-white transition-colors group-hover/row:text-accent-cyan"
+                      >
+                        {site.linkedin.replace(/^https?:\/\//, "")}
+                      </div>
+                    </div>
+                  </a>
+                </li>
+
+                <!-- Location -->
+                <li class="py-3.5">
+                  <div class="flex items-start gap-3">
+                    <span
+                      class="mt-0.5 inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.04] text-slate-300"
+                      aria-hidden="true"
+                    >
+                      <svg
+                        class="h-4 w-4"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                      </svg>
+                    </span>
+                    <div class="min-w-0 flex-1">
+                      <div class="text-[10px] uppercase tracking-[0.18em] text-slate-500">
+                        Location
+                      </div>
+                      <div class="mt-0.5 text-sm text-white">
+                        {site.location}
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <!-- Focus areas -->
+                <li class="py-3.5">
+                  <div class="flex items-start gap-3">
+                    <span
+                      class="mt-0.5 inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.04] text-slate-300"
+                      aria-hidden="true"
+                    >
+                      <svg
+                        class="h-4 w-4"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <circle cx="12" cy="12" r="6"></circle>
+                        <circle cx="12" cy="12" r="2"></circle>
+                      </svg>
+                    </span>
+                    <div class="min-w-0 flex-1">
+                      <div class="text-[10px] uppercase tracking-[0.18em] text-slate-500">
+                        Focus Areas
+                      </div>
+                      <div class="mt-0.5 text-sm text-white">
+                        AI Automation · Managed EDR/XDR · SecOps Transformation
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>

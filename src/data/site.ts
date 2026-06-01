@@ -73,10 +73,10 @@ export const impactMetrics = [
       "Driven through AI-assisted automation, workflow optimization, and intelligent response processes.",
   },
   {
-    metric: "Managed XDR",
+    metric: "Managed EDR & XDR",
     label: "Service Offering Founder",
     description:
-      "Founded and advanced Managed XDR service capabilities for Cisco XDR and Palo Alto Cortex XDR.",
+      "Founded and advanced Managed EDR and XDR service capabilities for the current company, including Cisco XDR and Palo Alto Cortex XDR service offerings.",
   },
   {
     metric: "Multi-Million $",
