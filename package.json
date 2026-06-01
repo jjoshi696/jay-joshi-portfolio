@@ -1,0 +1,23 @@
+{
+  "name": "jay-joshi-portfolio",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Executive technology portfolio for Jay \"JJ\" Joshi — Engineering Leader in AI Platforms, AI Automation & Digital Transformation.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/tailwind": "^5.1.4",
+    "@tailwindcss/typography": "^0.5.16",
+    "astro": "^4.16.18",
+    "tailwindcss": "^3.4.17"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}

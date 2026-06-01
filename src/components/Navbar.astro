@@ -1,0 +1,185 @@
+---
+import { navItems, site } from "@data/site";
+---
+
+<header
+  id="site-nav"
+  class="fixed inset-x-0 top-0 z-40 transition-all duration-300"
+>
+  <div class="container-page">
+    <div
+      data-nav-bar
+      class="mx-auto mt-4 flex items-center justify-between rounded-2xl border border-white/[0.06] bg-ink-900/60 px-4 py-2.5 backdrop-blur-xl transition-all duration-300"
+    >
+      <a
+        href="#hero"
+        class="group flex items-center gap-2.5"
+        aria-label="Jay Joshi JJ — Home"
+      >
+        <span
+          class="grid h-9 w-9 place-items-center rounded-lg bg-gradient-to-br from-accent-cyan/30 via-accent-blue/20 to-accent-violet/30 text-sm font-bold tracking-tight text-white ring-1 ring-inset ring-white/10"
+        >
+          JJ
+        </span>
+        <span class="hidden sm:flex flex-col leading-tight">
+          <span class="text-sm font-semibold text-white">Jay Joshi "JJ"</span>
+          <span class="text-[10px] uppercase tracking-[0.18em] text-slate-400"
+            >Engineering Leader</span
+          >
+        </span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-1" aria-label="Primary">
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              class="rounded-md px-3 py-1.5 text-sm font-medium text-slate-300 transition-colors hover:bg-white/[0.04] hover:text-white"
+              data-nav-link
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <a
+          href={site.resumeFile}
+          download
+          class="hidden sm:inline-flex btn-secondary text-xs px-3.5 py-2"
+          aria-label="Download resume PDF"
+        >
+          <svg
+            class="h-4 w-4"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Resume
+        </a>
+        <a href="#contact" class="hidden sm:inline-flex btn-primary text-xs px-3.5 py-2"
+          >Contact</a
+        >
+
+        <button
+          id="mobile-nav-toggle"
+          type="button"
+          class="lg:hidden inline-flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] text-slate-200"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <svg
+            class="h-5 w-5"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div
+      id="mobile-menu"
+      class="lg:hidden mt-2 hidden overflow-hidden rounded-2xl border border-white/[0.06] bg-ink-900/85 backdrop-blur-xl"
+    >
+      <nav class="flex flex-col p-3" aria-label="Mobile">
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              class="rounded-lg px-3 py-2.5 text-sm font-medium text-slate-200 hover:bg-white/[0.04] hover:text-white"
+              data-mobile-link
+            >
+              {item.label}
+            </a>
+          ))
+        }
+        <div class="mt-2 flex gap-2 px-1 pb-1">
+          <a href={site.resumeFile} download class="btn-secondary flex-1 text-xs"
+            >Resume</a
+          >
+          <a href="#contact" class="btn-primary flex-1 text-xs">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<script is:inline>
+  (() => {
+    const header = document.getElementById("site-nav");
+    const bar = document.querySelector("[data-nav-bar]");
+    const toggle = document.getElementById("mobile-nav-toggle");
+    const menu = document.getElementById("mobile-menu");
+
+    const onScroll = () => {
+      if (!bar) return;
+      if (window.scrollY > 16) {
+        bar.classList.add("shadow-card", "border-white/10");
+      } else {
+        bar.classList.remove("shadow-card", "border-white/10");
+      }
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    if (toggle && menu) {
+      toggle.addEventListener("click", () => {
+        const expanded = toggle.getAttribute("aria-expanded") === "true";
+        toggle.setAttribute("aria-expanded", String(!expanded));
+        menu.classList.toggle("hidden");
+      });
+
+      menu.querySelectorAll("[data-mobile-link]").forEach((link) => {
+        link.addEventListener("click", () => {
+          toggle.setAttribute("aria-expanded", "false");
+          menu.classList.add("hidden");
+        });
+      });
+    }
+
+    // Active section highlighting
+    const sections = Array.from(document.querySelectorAll("section[id]"));
+    const links = Array.from(document.querySelectorAll("[data-nav-link]"));
+    const setActive = (id) => {
+      links.forEach((l) => {
+        const href = l.getAttribute("href");
+        if (href === `#${id}`) {
+          l.classList.add("text-white", "bg-white/[0.05]");
+        } else {
+          l.classList.remove("text-white", "bg-white/[0.05]");
+        }
+      });
+    };
+    if ("IntersectionObserver" in window && sections.length) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) setActive(entry.target.id);
+          });
+        },
+        { rootMargin: "-45% 0px -50% 0px", threshold: 0 },
+      );
+      sections.forEach((s) => io.observe(s));
+    }
+  })();
+</script>

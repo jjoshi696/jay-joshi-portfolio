@@ -1,0 +1,7 @@
+PLACEHOLDER
+
+This is a placeholder marker file.
+
+Replace this with the actual resume PDF named `Jay-Joshi-Resume.pdf`
+inside the `public/` folder. Once placed, the "Download Resume" button
+on the site will serve it from `/Jay-Joshi-Resume.pdf`.

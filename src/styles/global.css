@@ -1,0 +1,215 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- Base ---------- */
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #05070d;
+}
+
+body {
+  @apply bg-ink-950 text-slate-200 font-sans antialiased;
+  font-feature-settings: "ss01", "cv11";
+  background-image:
+    radial-gradient(1200px 600px at 50% -10%, rgba(34, 211, 238, 0.08), transparent 60%),
+    radial-gradient(800px 500px at 90% 10%, rgba(139, 92, 246, 0.08), transparent 60%),
+    radial-gradient(900px 600px at 10% 90%, rgba(59, 130, 246, 0.06), transparent 60%);
+  background-attachment: fixed;
+}
+
+::selection {
+  background: rgba(34, 211, 238, 0.25);
+  color: #e2f7fc;
+}
+
+/* ---------- Reusable utility classes ---------- */
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
+  }
+
+  .section-pad {
+    @apply py-20 sm:py-24 lg:py-32;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-accent-cyan/90;
+  }
+
+  .eyebrow::before {
+    content: "";
+    @apply inline-block h-px w-8 bg-gradient-to-r from-accent-cyan to-transparent;
+  }
+
+  .heading-xl {
+    @apply text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl;
+    letter-spacing: -0.02em;
+  }
+
+  .heading-lg {
+    @apply text-3xl font-semibold tracking-tight text-white sm:text-4xl;
+    letter-spacing: -0.02em;
+  }
+
+  .heading-md {
+    @apply text-2xl font-semibold tracking-tight text-white sm:text-3xl;
+    letter-spacing: -0.01em;
+  }
+
+  .text-muted {
+    @apply text-slate-400;
+  }
+
+  .card {
+    @apply relative rounded-2xl border border-white/[0.07] bg-white/[0.025] p-6 backdrop-blur-sm transition-all duration-300;
+    box-shadow:
+      0 1px 0 0 rgba(255, 255, 255, 0.04) inset,
+      0 8px 32px -12px rgba(0, 0, 0, 0.6);
+  }
+
+  .card-hover {
+    @apply hover:border-accent-cyan/30 hover:bg-white/[0.04];
+  }
+
+  .card-hover:hover {
+    box-shadow:
+      0 1px 0 0 rgba(255, 255, 255, 0.06) inset,
+      0 0 0 1px rgba(34, 211, 238, 0.12),
+      0 16px 48px -12px rgba(34, 211, 238, 0.18);
+    transform: translateY(-2px);
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-cyan/60 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950;
+  }
+
+  .btn-primary {
+    @apply btn text-ink-950 shadow-[0_0_0_1px_rgba(34,211,238,0.4),0_8px_24px_-8px_rgba(34,211,238,0.55)];
+    background: linear-gradient(135deg, #67e8f9 0%, #22d3ee 50%, #06b6d4 100%);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow:
+      0 0 0 1px rgba(34, 211, 238, 0.6),
+      0 12px 32px -8px rgba(34, 211, 238, 0.7);
+  }
+
+  .btn-secondary {
+    @apply btn border border-white/10 bg-white/[0.04] text-slate-100 hover:border-white/20 hover:bg-white/[0.08];
+  }
+
+  .btn-ghost {
+    @apply btn text-slate-300 hover:text-white;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-medium text-slate-300 transition-colors;
+  }
+
+  .chip-accent {
+    @apply chip border-accent-cyan/25 bg-accent-cyan/[0.06] text-accent-cyan;
+  }
+
+  .divider {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent;
+  }
+
+  /* Gradient text */
+  .text-gradient {
+    background: linear-gradient(135deg, #e2f7fc 0%, #67e8f9 40%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Subtle "glow ring" for focal accents */
+  .glow-ring {
+    position: relative;
+  }
+
+  .glow-ring::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      rgba(34, 211, 238, 0.45),
+      rgba(139, 92, 246, 0.35),
+      rgba(59, 130, 246, 0.2)
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.7;
+  }
+}
+
+/* Executive portrait — clean circular headshot with full hair visible. */
+.profile-circle {
+  width: 420px;
+  height: 420px;
+  border-radius: 9999px;
+  overflow: hidden;
+  position: relative;
+  background: #0f172a;
+  border: 3px solid rgba(34, 211, 238, 0.55);
+  box-shadow: 0 0 60px rgba(34, 211, 238, 0.18);
+}
+
+.profile-photo {
+  position: absolute;
+  width: 100%;
+  height: 112%;
+  left: 0;
+  top: 0;
+  object-fit: cover;
+  object-position: center top;
+}
+
+@media (max-width: 1024px) {
+  .profile-circle {
+    width: 360px;
+    height: 360px;
+  }
+}
+
+@media (max-width: 640px) {
+  .profile-circle {
+    width: 260px;
+    height: 260px;
+  }
+}
+
+/* Hide scrollbar on horizontal tag rails */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

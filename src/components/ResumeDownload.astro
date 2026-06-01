@@ -1,0 +1,54 @@
+---
+import { site } from "@data/site";
+---
+
+<section id="resume" class="section-pad">
+  <div class="container-page">
+    <div class="glow-ring relative overflow-hidden rounded-3xl border border-white/[0.08] bg-gradient-to-br from-ink-800/80 via-ink-900/80 to-ink-900/95 px-6 py-12 sm:px-12 sm:py-16">
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute inset-0 opacity-70"
+      >
+        <div
+          class="absolute -left-16 -top-16 h-64 w-64 rounded-full bg-accent-cyan/15 blur-3xl"
+        ></div>
+        <div
+          class="absolute -bottom-16 right-0 h-72 w-72 rounded-full bg-accent-violet/15 blur-3xl"
+        ></div>
+      </div>
+
+      <div class="relative grid items-center gap-8 lg:grid-cols-12">
+        <div class="lg:col-span-8">
+          <span class="eyebrow">Resume</span>
+          <h2 class="heading-lg mt-4">Download Resume</h2>
+          <p class="mt-4 max-w-2xl text-slate-300">
+            Prefer a traditional resume format? Download Jay's resume as a PDF.
+          </p>
+          <p class="mt-2 text-sm text-slate-500">
+            File:
+            <span class="font-mono text-slate-400">Jay-Joshi-Resume.pdf</span>
+          </p>
+        </div>
+        <div class="lg:col-span-4 lg:text-right">
+          <a href={site.resumeFile} download class="btn-primary text-base">
+            <svg
+              class="h-5 w-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Download Resume
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

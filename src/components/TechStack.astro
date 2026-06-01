@@ -1,0 +1,65 @@
+---
+import { techStack } from "@data/site";
+
+const categoryIcons: Record<string, string> = {
+  "AI & Automation": `<path d="M12 2v6"></path><path d="M12 16v6"></path><path d="m4.93 4.93 4.24 4.24"></path><path d="m14.83 14.83 4.24 4.24"></path><path d="M2 12h6"></path><path d="M16 12h6"></path>`,
+  "Security Operations": `<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>`,
+  SIEM: `<rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect>`,
+  XDR: `<path d="M12 2L4 6v6c0 5 3.5 9.4 8 10 4.5-.6 8-5 8-10V6l-8-4z"></path>`,
+  EDR: `<path d="M9 12l2 2 4-4"></path><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c1.5 0 2.91.37 4.15 1.02"></path>`,
+  SOAR: `<path d="M3 17l6-6 4 4 8-8"></path><path d="M14 7h7v7"></path>`,
+  "Cloud & Network Security": `<path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>`,
+  "Business & Leadership": `<path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><path d="M20 8v6"></path><path d="M23 11h-6"></path>`,
+  Specialties: `<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>`,
+};
+---
+
+<section id="tech" class="section-pad">
+  <div class="container-page">
+    <div class="max-w-2xl">
+      <span class="eyebrow">Technology Stack</span>
+      <h2 class="heading-lg mt-4">
+        Tools, platforms & <span class="text-gradient">domains of fluency</span
+        >.
+      </h2>
+      <p class="mt-4 text-slate-400">
+        Operational depth across enterprise cybersecurity, AI automation, and
+        cloud-network ecosystems.
+      </p>
+    </div>
+
+    <div class="mt-12 grid auto-rows-fr gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      {
+        techStack.map((group) => (
+          <article class="card card-hover flex h-full flex-col">
+            <div class="flex items-center gap-3">
+              <span
+                class="inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border border-accent-cyan/20 bg-gradient-to-br from-accent-cyan/15 to-accent-violet/10 text-accent-cyan"
+                aria-hidden="true"
+              >
+                <svg
+                  class="h-4 w-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  set:html={categoryIcons[group.category] ?? categoryIcons["AI & Automation"]}
+                />
+              </span>
+              <h3 class="text-sm font-semibold uppercase tracking-[0.16em] text-white">
+                {group.category}
+              </h3>
+            </div>
+            <ul class="mt-5 flex flex-wrap gap-1.5">
+              {group.items.map((item) => (
+                <li class="chip">{item}</li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

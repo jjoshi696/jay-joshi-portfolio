@@ -1,0 +1,85 @@
+---
+import "../styles/global.css";
+import { site } from "@data/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = site.seo.title,
+  description = site.seo.description,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url).toString();
+---
+
+<!doctype html>
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#05070d" />
+    <meta name="color-scheme" content="dark" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={site.seo.keywords.join(", ")} />
+    <meta name="author" content={site.name} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:image" content={site.seo.ogImage} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={site.seo.ogImage} />
+
+    <!-- Favicon (inline SVG keeps the project self-contained) -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href={`data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%2367e8f9'/><stop offset='100%' stop-color='%23a78bfa'/></linearGradient></defs><rect width='64' height='64' rx='14' fill='%2305070d'/><text x='50%25' y='54%25' font-family='Inter,sans-serif' font-size='30' font-weight='700' text-anchor='middle' dominant-baseline='middle' fill='url(%23g)'>JJ</text></svg>`}
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+
+    <!-- Structured data -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: site.name,
+        jobTitle: site.primaryTitle,
+        url: canonical,
+        sameAs: [site.linkedin],
+        email: `mailto:${site.email}`,
+        description: site.seo.description,
+      })}
+    />
+  </head>
+  <body class="min-h-screen">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-accent-cyan focus:px-3 focus:py-2 focus:text-ink-950"
+      >Skip to content</a
+    >
+    <slot />
+  </body>
+</html>

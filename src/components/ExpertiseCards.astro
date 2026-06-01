@@ -1,0 +1,90 @@
+---
+import { expertiseCards, leadershipAreas } from "@data/site";
+
+const icons: Record<string, string> = {
+  spark: `<path d="M12 2v6"></path><path d="M12 16v6"></path><path d="m4.93 4.93 4.24 4.24"></path><path d="m14.83 14.83 4.24 4.24"></path><path d="M2 12h6"></path><path d="M16 12h6"></path><path d="m4.93 19.07 4.24-4.24"></path><path d="m14.83 9.17 4.24-4.24"></path>`,
+  shield: `<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path>`,
+  globe: `<circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>`,
+  handshake: `<path d="M12 6 9 9l-3-3-4 4 6 6 4-4"></path><path d="m12 6 3-3 4 4-3 3"></path><path d="m12 12 4 4 4-4"></path>`,
+  stack: `<polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline>`,
+  trend: `<path d="M3 17l6-6 4 4 8-8"></path><path d="M14 7h7v7"></path>`,
+};
+---
+
+<section id="expertise" class="section-pad">
+  <div class="container-page">
+    <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+      <div class="max-w-2xl">
+        <span class="eyebrow">Core Expertise</span>
+        <h2 class="heading-lg mt-4">
+          Where AI, cybersecurity, and <span class="text-gradient"
+            >business outcomes</span
+          > meet.
+        </h2>
+      </div>
+      <p class="max-w-md text-slate-400">
+        A leadership portfolio spanning automation, managed services,
+        engineering, and executive technology strategy.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        expertiseCards.map((card) => (
+          <article class="card card-hover group">
+            <div
+              class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-accent-cyan/20 bg-gradient-to-br from-accent-cyan/15 to-accent-violet/10 text-accent-cyan transition-transform group-hover:scale-105"
+              aria-hidden="true"
+            >
+              <svg
+                class="h-5 w-5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                set:html={icons[card.icon]}
+              />
+            </div>
+            <h3 class="mt-5 text-lg font-semibold text-white">{card.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-400">
+              {card.description}
+            </p>
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- Featured Leadership Areas -->
+    <div class="mt-20">
+      <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <span class="eyebrow">Featured Leadership Areas</span>
+          <h3 class="heading-md mt-4">
+            The pillars of an executive engineering practice.
+          </h3>
+        </div>
+      </div>
+
+      <ul class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        {
+          leadershipAreas.map((area, i) => (
+            <li class="group relative overflow-hidden rounded-xl border border-white/[0.07] bg-white/[0.02] p-4 transition-colors hover:border-accent-cyan/30 hover:bg-white/[0.04]">
+              <div class="flex items-center gap-3">
+                <span class="font-mono text-[10px] text-slate-500">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span class="text-sm font-medium text-slate-100">{area}</span>
+              </div>
+              <span
+                aria-hidden="true"
+                class="pointer-events-none absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-accent-cyan/40 to-transparent opacity-0 transition-opacity group-hover:opacity-100"
+              />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>

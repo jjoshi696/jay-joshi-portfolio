@@ -1,0 +1,151 @@
+---
+import { experience } from "@data/site";
+---
+
+<section id="experience" class="relative section-pad">
+  <div class="container-page">
+    <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+      <div class="max-w-2xl">
+        <span class="eyebrow">Experience</span>
+        <h2 class="heading-lg mt-4">
+          A track record of <span class="text-gradient"
+            >scaling engineering & cybersecurity outcomes</span
+          >.
+        </h2>
+      </div>
+      <div
+        class="flex items-center gap-3 text-xs text-slate-400"
+        aria-hidden="true"
+      >
+        <span class="flex items-center gap-2">
+          <span class="h-2 w-2 rounded-full bg-accent-cyan shadow-[0_0_12px_rgba(34,211,238,0.7)]"
+          ></span>
+          Featured role
+        </span>
+        <span class="flex items-center gap-2">
+          <span class="h-2 w-2 rounded-full bg-white/40"></span>
+          Earlier role
+        </span>
+      </div>
+    </div>
+
+    <ol class="relative mt-12 space-y-6">
+      <!-- Vertical line -->
+      <span
+        aria-hidden="true"
+        class="pointer-events-none absolute left-[18px] top-2 bottom-2 hidden w-px bg-gradient-to-b from-accent-cyan/60 via-white/10 to-transparent sm:block"
+      ></span>
+
+      {
+        experience.map((role, idx) => (
+          <li class="relative">
+            <!-- Timeline dot -->
+            <span
+              aria-hidden="true"
+              class={`absolute left-[10px] top-7 hidden h-4 w-4 rounded-full sm:flex items-center justify-center ${
+                role.featured
+                  ? "bg-accent-cyan shadow-[0_0_0_4px_rgba(34,211,238,0.12),0_0_16px_rgba(34,211,238,0.6)]"
+                  : "bg-white/30 ring-4 ring-ink-950"
+              }`}
+            >
+              {role.featured && (
+                <span class="h-1.5 w-1.5 rounded-full bg-white"></span>
+              )}
+            </span>
+
+            <details
+              class={`group/exp sm:ml-12 card transition-all duration-300 ${
+                role.featured
+                  ? "border-accent-cyan/20 bg-gradient-to-br from-accent-cyan/[0.04] via-white/[0.025] to-accent-violet/[0.04]"
+                  : ""
+              }`}
+              open={idx === 0}
+            >
+              <summary class="flex cursor-pointer list-none flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                <div class="flex-1">
+                  <div class="flex flex-wrap items-center gap-2 text-xs">
+                    <span
+                      class={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 font-mono uppercase tracking-[0.14em] ${
+                        role.featured
+                          ? "bg-accent-cyan/15 text-accent-cyan"
+                          : "bg-white/[0.04] text-slate-400"
+                      }`}
+                    >
+                      {role.featured ? "Featured" : `0${idx + 1}`}
+                    </span>
+                    <span class="text-slate-400">{role.dates}</span>
+                    <span class="text-slate-600">·</span>
+                    <span class="text-slate-400">{role.location}</span>
+                  </div>
+                  <h3 class="mt-3 text-xl font-semibold tracking-tight text-white sm:text-2xl">
+                    {role.role}
+                  </h3>
+                  <div class="mt-1 text-sm text-slate-300">
+                    <span class="font-medium text-white">{role.company}</span>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-2 sm:self-start">
+                  <span
+                    class="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-medium text-slate-300 transition-colors group-hover/exp:bg-white/[0.08] group-open/exp:border-accent-cyan/30 group-open/exp:bg-accent-cyan/[0.08] group-open/exp:text-accent-cyan"
+                  >
+                    <span class="group-open/exp:hidden">View details</span>
+                    <span class="hidden group-open/exp:inline">Collapse</span>
+                    <svg
+                      class="h-3.5 w-3.5 transition-transform duration-300 group-open/exp:rotate-180"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                  </span>
+                </div>
+              </summary>
+
+              <div class="mt-5 grid gap-6 lg:grid-cols-12">
+                <div class="lg:col-span-7">
+                  <p class="text-sm leading-relaxed text-slate-300 sm:text-[15px]">
+                    {role.summary}
+                  </p>
+
+                  <h4 class="mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
+                    Key Highlights
+                  </h4>
+                  <ul class="mt-3 space-y-2.5">
+                    {role.highlights.map((h) => (
+                      <li class="flex gap-3 text-sm leading-relaxed text-slate-300">
+                        <span
+                          class="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent-cyan/70"
+                          aria-hidden="true"
+                        />
+                        <span>{h}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div class="lg:col-span-5">
+                  <div class="rounded-2xl border border-white/[0.06] bg-black/20 p-4">
+                    <h4 class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
+                      Tags
+                    </h4>
+                    <div class="mt-3 flex flex-wrap gap-1.5">
+                      {role.tags.map((t) => (
+                        <span class="chip">{t}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

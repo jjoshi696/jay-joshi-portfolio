@@ -1,0 +1,79 @@
+---
+import { executiveSummary } from "@data/site";
+---
+
+<section id="about" class="section-pad">
+  <div class="container-page">
+    <div class="grid gap-10 lg:grid-cols-12">
+      <div class="lg:col-span-4">
+        <span class="eyebrow">Executive Summary</span>
+        <h2 class="heading-lg mt-4">
+          Engineering leadership for the
+          <span class="text-gradient">AI-driven security era</span>.
+        </h2>
+        <div class="mt-8 grid grid-cols-2 gap-3 text-xs">
+          <div class="rounded-xl border border-white/[0.06] bg-white/[0.02] p-3">
+            <div class="text-slate-500 uppercase tracking-[0.18em] text-[10px]">
+              Focus
+            </div>
+            <div class="mt-1 font-medium text-white">AI-Driven SecOps</div>
+          </div>
+          <div class="rounded-xl border border-white/[0.06] bg-white/[0.02] p-3">
+            <div class="text-slate-500 uppercase tracking-[0.18em] text-[10px]">
+              Style
+            </div>
+            <div class="mt-1 font-medium text-white">Outcome-Driven</div>
+          </div>
+          <div class="rounded-xl border border-white/[0.06] bg-white/[0.02] p-3">
+            <div class="text-slate-500 uppercase tracking-[0.18em] text-[10px]">
+              Scope
+            </div>
+            <div class="mt-1 font-medium text-white">Global Delivery</div>
+          </div>
+          <div class="rounded-xl border border-white/[0.06] bg-white/[0.02] p-3">
+            <div class="text-slate-500 uppercase tracking-[0.18em] text-[10px]">
+              Audience
+            </div>
+            <div class="mt-1 font-medium text-white">C-Suite & Boards</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-8">
+        <div class="card card-hover">
+          <div class="absolute right-6 top-6 hidden text-accent-cyan/70 sm:block">
+            <svg
+              class="h-7 w-7"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                d="M9 7H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h2v2a2 2 0 0 1-2 2H4v2h1a4 4 0 0 0 4-4V7zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h2v2a2 2 0 0 1-2 2h-1v2h1a4 4 0 0 0 4-4V7z"
+              ></path>
+            </svg>
+          </div>
+          <div class="space-y-5">
+            {
+              executiveSummary.map((p) => (
+                <p class="text-base leading-relaxed text-slate-300">{p}</p>
+              ))
+            }
+          </div>
+          <div class="mt-6 flex flex-wrap gap-2">
+            {[
+              "RAG Workflows",
+              "Managed XDR",
+              "SOC Modernization",
+              "Pre-Sales",
+              "Global Engineering",
+              "Digital Transformation",
+            ].map((t) => (
+              <span class="chip">{t}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

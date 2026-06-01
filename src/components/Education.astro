@@ -1,0 +1,62 @@
+---
+import { education } from "@data/site";
+---
+
+<section id="education" class="section-pad">
+  <div class="container-page">
+    <div class="grid gap-10 lg:grid-cols-12">
+      <div class="lg:col-span-4">
+        <span class="eyebrow">Education</span>
+        <h2 class="heading-lg mt-4">
+          Academic <span class="text-gradient">foundation</span>.
+        </h2>
+        <p class="mt-4 text-slate-400">
+          A multidisciplinary background spanning cybersecurity, computer
+          science, and computer engineering.
+        </p>
+      </div>
+
+      <div class="lg:col-span-8">
+        <ul class="grid gap-4 sm:grid-cols-2">
+          {
+            education.map((item, i) => (
+              <li class="card card-hover">
+                <div class="flex items-start justify-between gap-3">
+                  <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-slate-500">
+                    0{i + 1}
+                  </span>
+                  <span
+                    class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-accent-cyan/20 bg-accent-cyan/[0.06] text-accent-cyan"
+                    aria-hidden="true"
+                  >
+                    <svg
+                      class="h-4 w-4"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                      <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                    </svg>
+                  </span>
+                </div>
+                <h3 class="mt-4 text-base font-semibold text-white">
+                  {item.title}
+                </h3>
+                {"status" in item && item.status && (
+                  <div class="mt-2 inline-flex items-center gap-1.5 rounded-full border border-amber-300/20 bg-amber-300/[0.05] px-2.5 py-0.5 text-[11px] font-medium text-amber-300">
+                    <span class="h-1.5 w-1.5 rounded-full bg-amber-300" />
+                    {item.status}
+                  </div>
+                )}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

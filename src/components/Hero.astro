@@ -1,0 +1,193 @@
+---
+import { site } from "@data/site";
+
+const portraitBadges = [
+  "AI Automation",
+  "Managed XDR",
+  "Global Engineering",
+  "SOC Transformation",
+] as const;
+---
+
+<section
+  id="hero"
+  class="relative isolate overflow-hidden pt-32 sm:pt-36 lg:pt-44"
+>
+  <!-- Background grid + radial spot -->
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-0 -z-10 bg-grid-faint opacity-[0.35]"
+    style="background-size: 56px 56px; mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 30%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 30%, transparent 75%);"
+  >
+  </div>
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-0 -z-10 bg-radial-spot"
+  >
+  </div>
+
+  <div class="container-page">
+    <div class="grid items-start gap-12 lg:grid-cols-12 lg:gap-12">
+      <!-- Left: copy + CTAs -->
+      <div class="lg:col-span-7">
+        <h1 class="heading-xl">
+          Jay Joshi <span class="text-gradient">"JJ"</span>
+        </h1>
+
+        <p class="mt-5 text-lg sm:text-xl font-medium text-slate-200">
+          {site.primaryTitle}
+        </p>
+        <p class="mt-2 text-sm sm:text-base text-slate-400 max-w-2xl">
+          VP, Global Engineering & Managed Services specializing in AI-driven
+          cybersecurity automation, Managed XDR, SOC transformation, SIEM / XDR
+          / EDR operations, and global managed services delivery.
+        </p>
+
+        <p class="mt-5 text-sm sm:text-base text-slate-300 max-w-2xl">
+          Supporting enterprise clients through scalable engineering,
+          intelligent automation, and ROI-driven digital transformation.
+        </p>
+
+        <div class="mt-9 flex flex-wrap items-center gap-3">
+          <a href={site.resumeFile} download class="btn-primary">
+            <svg
+              class="h-4 w-4"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Download Resume
+          </a>
+          <a href="#experience" class="btn-secondary"
+            >View Experience
+            <svg
+              class="h-4 w-4"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14"></path>
+              <path d="M12 5l7 7-7 7"></path>
+            </svg>
+          </a>
+          <a href="#contact" class="btn-ghost">Contact Me</a>
+          <a
+            href={site.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-ghost"
+          >
+            <svg
+              class="h-4 w-4"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.05-1.86-3.05-1.86 0-2.14 1.45-2.14 2.95v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.86 3.36-1.86 3.6 0 4.27 2.37 4.27 5.45v6.3zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"
+              ></path>
+            </svg>
+            LinkedIn
+          </a>
+        </div>
+
+        <!-- Quick credibility tags -->
+        <div class="mt-8 flex flex-wrap gap-2" aria-label="Focus areas">
+          {[
+            "AI-Driven SecOps",
+            "RAG Workflows",
+            "Managed XDR",
+            "Cisco XDR",
+            "Cortex XDR",
+            "Digital Transformation",
+          ].map((t) => (
+            <span class="chip">{t}</span>
+          ))}
+        </div>
+
+        <!-- Stat ribbon -->
+        <dl
+          class="mt-8 grid max-w-2xl grid-cols-2 gap-4 sm:grid-cols-4"
+          aria-label="Key impact summary"
+        >
+          {[
+            { v: "60–70%", k: "Manual effort ↓" },
+            { v: "Multi-M$", k: "Deal support" },
+            { v: "Global", k: "Engineering teams" },
+            { v: "Managed XDR", k: "Service founder" },
+          ].map((s) => (
+            <div class="rounded-xl border border-white/[0.06] bg-white/[0.025] p-3">
+              <dt class="text-[10px] uppercase tracking-[0.18em] text-slate-400">
+                {s.k}
+              </dt>
+              <dd class="mt-1 text-base font-semibold text-white">{s.v}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <!-- Right: circular portrait -->
+      <div class="lg:col-span-5">
+        <div
+          class="relative mx-auto flex w-full flex-col items-center lg:sticky lg:top-28 lg:items-center"
+        >
+          <!-- Outer glow halo -->
+          <div
+            aria-hidden="true"
+            class="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[120%] w-[120%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-accent-cyan/25 via-accent-violet/15 to-accent-blue/10 blur-3xl"
+          >
+          </div>
+
+          <!-- Circular portrait -->
+          <div class="profile-circle">
+            <img
+              src="/jay-joshi-profile.webp"
+              alt="Jay Joshi executive portrait"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+              class="profile-photo"
+            />
+          </div>
+
+          <!-- Skill badges below portrait -->
+          <ul class="mt-8 flex max-w-sm flex-wrap justify-center gap-2">
+            {
+              portraitBadges.map((b) => (
+                <li class="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[11px] font-medium text-slate-200 backdrop-blur-sm transition-colors hover:border-accent-cyan/30 hover:text-white">
+                  <span
+                    class="h-1.5 w-1.5 rounded-full bg-accent-cyan"
+                    aria-hidden="true"
+                  />
+                  {b}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="mt-16 flex justify-center text-slate-500" aria-hidden="true">
+      <div class="flex flex-col items-center gap-2">
+        <span class="text-[10px] uppercase tracking-[0.25em]">Scroll</span>
+        <span
+          class="h-8 w-px bg-gradient-to-b from-white/30 to-transparent"
+        ></span>
+      </div>
+    </div>
+  </div>
+</section>
